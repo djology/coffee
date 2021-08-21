@@ -1,0 +1,114 @@
+存储引擎
+
+1. 完整的建表语句
+        show create table emp;
+        CREATE TABLE `emp` (
+          `EMPNO` int NOT NULL COMMENT '员工编号',
+          `ENAME` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '员工姓名',
+          `JOB` varchar(9) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '工作岗位',
+          `MGR` int DEFAULT NULL COMMENT '上级领导编号',
+          `HIREDATE` date DEFAULT NULL COMMENT '入职日期',
+          `SAL` double(7,2) DEFAULT NULL COMMENT '月薪',
+          `COMM` double(7,2) DEFAULT NULL COMMENT '补助/津贴',
+          `DEPTNO` int DEFAULT NULL COMMENT '部门编号',
+          PRIMARY KEY (`EMPNO`)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+    建表时可以指定存储引擎，也可以指定字符集
+    MySQL默认存储引擎是InnoDB
+
+2. 存储引擎
+    什么是存储引擎？
+        存储引擎的说法仅存在MySQL中，Oracle中称之为表的存储方式
+
+    MySQL中支持很多存储引擎，每个存储引擎都对应一种不同的存储方式
+
+    查看当前版本支持的存储引擎？
+        show engines;
+        show engines \G（\G可以将表格形式转以纵向形式呈现，当前版本号为8.0.26）
+
+              Engine: MEMORY
+             Support: YES
+             Comment: Hash based, stored in memory, useful for temporary tables
+        Transactions: NO
+                  XA: NO
+          Savepoints: NO
+        *************************** 2. row ***************************
+              Engine: MRG_MYISAM
+             Support: YES
+             Comment: Collection of identical MyISAM tables
+        Transactions: NO
+                  XA: NO
+          Savepoints: NO
+        *************************** 3. row ***************************
+              Engine: CSV
+             Support: YES
+             Comment: CSV storage engine
+        Transactions: NO
+                  XA: NO
+          Savepoints: NO
+        *************************** 4. row ***************************
+              Engine: FEDERATED
+             Support: NO
+             Comment: Federated MySQL storage engine
+        Transactions: NULL
+                  XA: NULL
+          Savepoints: NULL
+        *************************** 5. row ***************************
+              Engine: PERFORMANCE_SCHEMA
+             Support: YES
+             Comment: Performance Schema
+        Transactions: NO
+                  XA: NO
+          Savepoints: NO
+        *************************** 6. row ***************************
+              Engine: MyISAM
+             Support: YES
+             Comment: MyISAM storage engine
+        Transactions: NO
+                  XA: NO
+          Savepoints: NO
+        *************************** 7. row ***************************
+              Engine: InnoDB
+             Support: DEFAULT
+             Comment: Supports transactions, row-level locking, and foreign keys
+        Transactions: YES
+                  XA: YES
+          Savepoints: YES
+        *************************** 8. row ***************************
+              Engine: BLACKHOLE
+             Support: YES
+             Comment: /dev/null storage engine (anything you write to it disappears)
+        Transactions: NO
+                  XA: NO
+          Savepoints: NO
+        *************************** 9. row ***************************
+              Engine: ARCHIVE
+             Support: YES
+             Comment: Archive storage engine
+        Transactions: NO
+                  XA: NO
+          Savepoints: NO
+
+3. 常见的存储引擎
+    MyISAM
+
+            用3个文件表示每张表：
+                    格式文件，存储表结构（mytable.frm）
+                    数据文件，存储表中数据（mytable.MYD）
+                    索引文件，存储表上索引（mytable.MYI）
+            可被压缩，节省存储空间，且可被转换为只读表，提高检索效率
+            不支持事务
+
+    InnoDB
+
+            支持事务、行级锁、外键等
+            表结构存储在frm文件中
+            数据存储在tablespace表空间中（逻辑概念），无法被压缩，无法被转换为只读
+            提供一组记录事务性活动的日志文件
+            支持级联删除和级联更新
+
+    MEMORY
+
+            不支持事务，数据容易丢失，数据和索引存储在内存中
+            查询速度快

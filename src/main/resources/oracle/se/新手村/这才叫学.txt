@@ -1,0 +1,125 @@
+Trial: Learning the Java Language
+
+Object-Oriented Programming Concepts（面向对象编程概念）
+    Object
+
+            对象与现实世界的对象类似，也由状态和相关行为组成
+
+            对象将其状态存储在字段（变量）中，并通过方法（函数）公开其行为
+            调用方法对对象的内部状态进行操作，并作为对象之间通信的主要机制
+            隐藏内部状态并要求通过对象的方法执行所有交互称为 数据封装 --- 面向对象的基本原则
+
+    Class
+
+            类是创建单个对象的蓝图
+
+    Inheritance
+
+            面向对象编程允许从其他类中继承常用的状态和行为
+
+    Interface
+
+            对象通过公开的方法定义与外部的交互，方法形成对象与外界的接口
+            在最常见的形式中，接口是一组没有主体的相关方法
+
+    Package
+
+            包是组织一组相关类和接口的命名空间
+---------------------------------------------------------------------------------------
+Language Basics（语言基础）
+    Variables
+
+            在Java编程语言中，术语“字段”和“变量”都被使用，且被混淆
+
+            Java编程语言中定义了以下类型的变量：
+                    实例变量（非静态字段），对象将其各自的状态存储在“非静态字段”中，即未使用static关键字声明的字段
+                    类变量（静态字段），由static修饰符声明的任何字段
+                    局部变量，仅对声明它们的方法可见，且不会分配默认值
+                    参数，main方法签名中的args变量是该方法的参数。“参数”总是被归类于“变量”而不是“字段”
+
+            原始数据类型
+                    Java编程语言是静态类型的，这意味着必须先声明才能调用它们
+
+                    byte，8位有符号二进制补码整数
+                    short，16位有符号二进制补码整数
+                    int，默认为32位有符号二进制补码整数
+                    long，64位有符号二进制补码整数
+                    float，单精度32位IEEE 754浮点数
+                    double，双精度64位IEEE 764浮点数
+                    boolean，代表一位信息
+                    char，单个16位Unicode字符
+
+            数组，是一个容器对象，数组的长度在创建时确定，且固定
+
+                    // 声明一个变量来引用一个整数数组
+                    int[] anArray;
+
+                    // 创建一个整数数组
+                    anArray = new int[10];
+                    // 为元素分配值
+                    anArray[1] = 100;
+                    // 通过索引访问元素
+                    System.out.println("索引1处的元素值为：" + anArray[1]);
+                    // 创建和初始化数组
+                    int[] anArray = {
+                        100, 200, 300
+                    };
+
+                    数组操作，Java SE在java.util.Arrays中提供了几种在类中执行数组操作的方法
+
+    Operators
+    Expressions, Statements, and Blocks
+    Control Flow Statements
+
+            控制流语句通过使用决策、循环和分支来打破执行流程，使得程序有条件地执行特地代码块
+
+            决策语句
+                    if
+                    if-else
+                    switch
+            循环语句
+                    for (initialization; termination; increment) { statement(s) }
+                    while
+                    do-while
+            分支语句
+                    break
+                    continue
+                    return
+---------------------------------------------------------------------------------------
+Classes and Objects（类和对象）
+    Classes
+    Objects
+    More on Classes
+    Nested Classes
+    Enum Types
+---------------------------------------------------------------------------------------
+Annotations（注解）
+    Annotations Basics
+    Declaring an Annotation Type
+    Predefined Annotation Types
+    Type Annotations and Pluggable Type Systems
+    Repeating Annotations
+---------------------------------------------------------------------------------------
+Interfaces and Inheritance（接口和继承）
+    Interfaces
+    Inheritance
+---------------------------------------------------------------------------------------
+Numbers and Strings（数字和字符串）
+    Numbers
+    Characters
+    Strings
+    Autoboxing and Unboxing
+---------------------------------------------------------------------------------------
+Generics（泛型）
+    Why Use Generics
+    Generic Types
+    Generic Methods
+    Bounded Type Parameters
+    Generics, Inheritance, and Subtypes
+    Type Inference
+    Wildcards
+    Type Erasure
+    Restrictions on Generics
+---------------------------------------------------------------------------------------
+Packages（包）
+    Creating and Using Packages

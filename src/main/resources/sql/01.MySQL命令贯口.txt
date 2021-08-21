@@ -1,0 +1,52 @@
+1. SQL、DB、DBMS之间关系？
+    DB：Database，数据库实际在硬盘上以文件的形式存在
+    DBMS：Database Management System，数据库管理系统
+    SQL：Structural Query Language，结构化查询语言
+
+    DBMS -(执行)-> SQL -(操作)-> DB
+
+2. 什么是表？
+    表：table，是数据库的基本组成单元
+
+    一张表包括行和列：
+            行：被称为数据/记录（data）
+            列：被称为字段（column）
+
+    每个字段应该有哪些属性？
+            字段名，数据类型，相关的约束
+
+3. SQL分类
+    DQL（数据查询语言）：select
+    DML（数据操作语言）：insert，delete，update
+    DDL（数据定义语言）：create， drop，alter
+    TCL（事务控制语言）：commit，rollback
+    DCL（数据控制语言）：grant，revoke
+
+4. 导入数据
+    第一步：登录MySQL数据库管理系统
+                    mysql -uroot -pdjology;
+    第二步：查看数据库
+                    show databases;（属于MySQL命令）
+    第三步：创建数据库
+                    create database djology;（属于MySQL命令）
+    第四步：使用数据库
+                    use djology;（属于MySQL命令）
+    第五步：查看数据库中表
+                    show tables;（属于MySQL命令）
+    第六步：初始化数据
+                    source xxxxxx.sql
+
+5. 删除数据库
+    drop database djology;
+
+6. 查看表结构
+    desc dept;
+
+7. 常用命令
+    查看当前使用的数据库
+    mysql> select database();
+    查看MySQL版本号
+    mysql> select version();
+
+8. 查看创建表语句
+    show create table emp;

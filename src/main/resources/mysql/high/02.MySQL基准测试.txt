@@ -1,0 +1,18 @@
+MySQL基准测试
+
+
+2.4 基准测试工具
+2.4.1 集成式测试工具
+
+    ab（Apache HTTP服务器基准测试工具）
+    http_load（同被设计为对Web服务器进行测试）
+    JMeter（可以加载其他应用并测试其性能）
+
+2.4.2 单组件式测试工具
+
+    mysqlslap
+    MySQL Benchmark Suite（sql-bench）
+    Super Smack
+    Database Test Suite
+    Percona's TPCC-MySQL Tool
+    sysbench

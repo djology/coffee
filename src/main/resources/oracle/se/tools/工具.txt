@@ -1,0 +1,95 @@
+工具参考
+
+
+    主要工具（以方便创建和构建应用程序）
+
+            javac：可以读取Java类和接口定义，并编译成字节码和类文件
+            javap：反汇编一个或多个类文件
+            javadoc：从Java源文件生成API文档的HTML页面
+            java：可以用来启动Java应用程序
+            jar：可以为类和资源创建存档，并从存档中操作或恢复单个类或资源
+            jlink：将一组模块及其依赖项组装和优化为自定义运行时映像
+            jmod：可以创建JMOD文件并列出有JMOD文件的内容
+            jdeps：可以用来启动Java类依赖项分析器
+            jdeprscan：用作静态分析工具，用于扫描jar文件（或某些其它类文件聚合）已使用已弃用的API元素
+
+    语言外壳（以提供用于尝试Java语言的交互式环境）
+
+            jshell：在读取-评估-打印循环（REPL）中以交互方式评估Java编程语言的声明、语句和表达式
+
+    安全工具（以在系统上设置安全策略并创建可以在远程站点设置的安全策略范围内工作的应用程序）
+
+            keytool：可以用来管理加密密钥、X.509证书链和可信证书的密钥库（数据库）
+            jarsigner：以对Java存档（jar）文件进行签名和验证
+            kinit：
+            klist：
+            ktab：
+
+    远程方法调用（RMI）工具（可以创建通过Web或其他网络进行交互的应用程序）
+
+            rmic：使用rmic编译器通过Java远程方法协议（JRMP）生成存根和骨架类文件
+            rmiregistry：
+            rmid：
+            serialver：
+
+    Java部署工具（以部署Java应用程序）
+
+            pack2000：
+            unpack2000：
+
+    监控工具（以监控性能统计信息）
+
+            jconsole：
+            jps：
+            jstat：
+            jstatd：
+
+    Java辅助工具（以检查Java对象的可访问性）
+
+            jaccessinspector：
+            jaccesswalker：
+
+    故障排除工具（以执行特定的故障排除任务）
+
+            jcmd：
+            jdb：
+            jhsdb：
+            jinfo：
+            jmap：
+            jstack：
+
+    脚本工具（以运行与Java平台交互的脚本）
+
+            jjs：
+            jrunscript：
+
+
+    1. 工具和命令参考
+        JDK工具及其命令使开发人员能够处理开发任务
+
+    2. 创建和构建应用程序的主要工具
+        javac
+        javap
+        javadoc
+        java
+        jar
+        jlink
+        jmod
+        jdeps
+        jdeprscan
+
+    3. 语言外壳
+
+    4. 安全工具和命令
+
+    5. 远程方法调用（RMI）工具和命令
+
+    6. Java 部署工具和命令
+
+    7. 监控工具和命令
+
+    8. Java 辅助工具和命令
+
+    9. 故障排除工具和命令
+
+    10. 脚本命令

@@ -1,0 +1,61 @@
+1. create
+    语法格式：
+        create table 表名(
+            字段名1 数据类型,
+            字段名2 数据类型,
+            字段名3 数据类型,
+            ....
+        );
+
+    MySQL中常见的数据类型？
+        int                  整数型
+        bigint            长整型
+        float               浮点型
+        char               定长字符串
+        varchar          可变长字符串
+        date              日期类型（对应java.sql.Date）
+        BLOB             二进制大对象（存储图片、视频等流媒体信息）
+        CLOB             字符大对象（存储较大文本）
+
+    创建学生表，学生信息包括：学号、姓名、性别、班级编号、生日
+        drop table if exists t_student;
+        create table t_student(
+            sno bignit,
+            sname varchar(255),
+            sex char(1) default 1,
+            classno varchar(255),
+            birth char(10)
+        );
+
+    「快创」语法格式：
+        create table 表名 as DQL; （表的复制，将查询结果当作表创建出来）
+
+2. insert
+    语法格式：
+        insert into 表名(字段名1, 字段名2, 字段名3, .... ) values(值1, 值2, 值3, ....);
+
+    「快创」语法格式：
+        insert into 表名 DQL; （将查询结果插入到一张表中）
+
+3. update
+    语法格式：
+        update 表名 set 字段名1=值1, 字段名2=值2, .... where 条件; （没有条件整张表数据全部更新）
+
+    将部门10的LOC修改为SHANGHAI，将部门名称修改为RENSHIBU？
+        update dept set loc = 'SHANGHAI', dname = 'RENSHIBU' where deptno = 10;
+
+4. delete
+    语法格式：
+        delete from 表名 where 条件; （没有条件全部删除）
+
+    删除10部门数据？
+        delete from dept where deptno = 10;
+    删除所有记录？
+        delete from dept;
+        truncate table 表名; （不可回滚）
+
+    增删改查，CRUD
+            Create（新增）
+            Retrieve（检索）
+            Update（修改）
+            Delete（删除）

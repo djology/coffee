@@ -1,0 +1,88 @@
+1. 连接查询
+    实际开发中，出于降低「数据冗余」的考虑，大部分情况都不仅是从单表中查询数据，而是多张表联合查询最终的结果
+
+2. 连接查询分类
+    年代划分：
+            SQL92
+            SQL99
+
+    表的连接方式划分：
+            内连接
+                等值连接
+                非等值连接
+                自连接
+            外连接
+                左外连接
+                右外连接
+            全连接
+
+3. 「笛卡尔积现象」
+    找出每个员工的部门名称，要求显示员工名和部门名称？
+        select e.ename, d.dname from emp e, dept d;
+
+4. 内连接の等值连接
+    查询每个员工的部门名称，要求显示员工名和部门名？
+        select ename, dname from emp, dept where emp.deptno = dept.deptno; （SQL92）
+        select ename, dname from emp (inner) join emp on emp.deptno = dept.deptno; （SQL99）
+
+5. 内连接の非等值连接
+    找出每个员工的工资等级，要求显示员工名、工资、工资等级？
+        select emp.ename, emp.sal, salgrade.grade from emp join salgrade on emp.sal between salgrade.losal and salgrade.hisal;
+
+6. 内连接の自连接
+    找出每个员工的上级领导，要求显示员工名和对应的领导名
+        select a.ename as '员工名', b.ename as '领导名' from emp a join emp b on a.mgr = b.empno; （少了KING数据）
+
+7. 外连接
+
+    内连接与外连接的区别？
+        内连接平等查询
+        外连接，区分主副表，副表主动给出NULL以匹配
+
+    找出每个员工的上级领导？
+        select a.ename b.ename from emp a left outer join emp b on a.mgr = b.empno; （外连接补齐KING数据）
+    找出哪个部门没有员工？
+        select d.* from emp e right join dep d on e.deptno = d.deptno where e.empno is null;
+
+8. 三张表查询
+    找出每个员工的部门名称以及工资等级？
+        select e.ename, d.dname, s.grade
+        from emp e join dept d on e.deptno = d.deptno
+        join salgrade s on e.sal between s.losal and s.hisal;
+
+9. 子查询（嵌套使用select子句）
+    whereの子查询
+    找出高于平均薪资的员工信息？
+        select * from emp where sal > (select avg(sal) from emp);
+
+    fromの子查询
+    找出每个部门平均薪资的薪资等级？
+        select t.*, s.grade from (select deptno, avg(sal) from emp group by emp) t join salgrade s on t.avg(sal) between s.losal and s.hisal;
+    找出每个部门平均的薪水等级？
+        select e.deptno, avg(s.grade) from emp e join salgrade s on e.sal between s.losal and s.hisal group by e.deptno;
+
+    selectの子查询
+    找出每个员工所在的部门名称，要求显示员工名和部门名？
+        select e.ename, d.dname from emp e join dept d on e.deptno = d.deptno;
+        select e.ename, (select d.dname from dept d where e.deptno) from emp e;
+
+10. union（联合）
+    找出工作岗位是SALESMAN和MANAGER的员工？
+        select ename, job from emp where job = 'SALESMAN' or job = 'MANAGER';
+        select ename, job from emp where job in ('SALESMAN', 'MANAGER');
+        select ename, job from emp where job = 'SALESMAN'
+        union
+        select ename, job from emp where job = 'MANAGER';
+
+11. limit（分页查询）
+    limit 是MySQL中特有的，Oracle中有相同的机制，叫做rownum
+
+    语法格式：
+        limit startIndex, length（startIndex表示起始位置，默认从0开始）
+
+    取出工资前5名的员工？
+        select ename, sal from emp order by sal desc limit 0, 5;
+    找出工资排名在第4到第9名的员工？
+        select ename, sal from emp order by sal desc limit 3, 6;
+
+    (pageNo - 1) * pageSize, pageSize

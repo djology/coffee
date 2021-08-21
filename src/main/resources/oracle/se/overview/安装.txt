@@ -1,0 +1,31 @@
+JDK 安装指南
+
+    版本字符串格式
+
+        $Feature 是每个功能版本增加的版本号，每六个月增加一次
+        $Interim 是每个临时版本递增的版本号，包含错误修复和增强
+        $Update 是针对更新版本递增的版本号，包含针对安全问题、回归和新功能中错误的修复
+        $Patch 是为紧急补丁发布而增加的版本号，以修复关键问题
+
+    在 Microsoft Windows 平台上安装 JDK
+
+    JDK 安装目录结构
+
+        /jdk-interim.update.patch.jdk
+                JDK软件安装的根目录，包括版权、自述文件和发布文件
+        /jdk-interim.update.patch.jdk/Contents/Home
+                macOS上JDK软件安装的根目录
+        /jdk-interim.update.patch.jdk/bin
+                由链接到图像的模块定义的可执行文件和命令行启动器
+        /jdk-interim.update.patch.jdk/conf
+                配置文件，旨在由开发者，部署人员和最终用户进行编辑
+        /jdk-interim.update.patch.jdk/lib
+                运行时系统的私有实现细节
+        /jdk-interim.update.patch.jdk/jmods
+                编译后的模块定义
+        /jdk-interim.update.patch.jdk/legal
+                每个模块的版权和许可文件
+        /jdk-interim.update.patch.jdk/lib/src.zip
+                包含Java平台源代码的存档
+        /jdk-interim.update.patch.jdk/include
+                支持使用Java本机接口和Java虚拟机调试器接口进行本机代码编程的C语言头文件

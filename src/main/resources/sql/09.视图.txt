@@ -1,0 +1,21 @@
+视图
+
+1. 什么是视图？
+    站在不同视角看到的数据
+
+2. 操作视图（只有DQL可以创建视图）
+    创建视图
+        create view myview as select empno, ename from emp;
+    删除视图
+        drop view myview;
+
+3. 对视图进行CRUD，会影响到原表数据
+
+4. 面向视图操作
+        select * from myview;
+
+        create table emp_bak as select * from emp;
+        create view myview as select empno, ename from emp_bak;
+
+5. 视图作用
+    视图可以隐藏表的实现细节

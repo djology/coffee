@@ -1,0 +1,84 @@
+约束（Constraint）
+
+1. 常见约束？
+    非空约束（not null）
+    唯一约束（unique）
+    主键约束（primary key）
+    外键约束（foreign key）
+    检查约束（check），Oracle中存在check约束，MySQL暂不支持
+
+2. 非空约束
+        drop table if exists t_user;
+        create table t_user(
+            id int,
+            username varchar(255) not null,
+            passwd varchar(255)
+        );
+        insert into t_user(id, passwd) value(01, '123');
+        ERROR 1364 (HY000): Field 'username' doesn't have a default value
+
+        insert into t_user(id, username, passwd) value(01, 'lisi', '123');
+
+3. 唯一约束（unique）
+        drop table if exists t_user;
+        create table t_user(
+            id int,
+            username varchar(255),
+            usercode varchar(255) unique, // 列级约束
+//            unique(usercode, username) // 表级约束，联合实现unique约束
+        );
+        insert into t_user value(1, 'zhangsan');
+        insert into t-user value(2, 'zhangsan');
+        ERROR 1062 (23000): Duplicate entry 'zhangsan' for key 'username'
+
+4. 主键约束（primary key）
+    对一张表添加主键约束？
+        drop table if exists t_user;
+        create table t_user(
+            id int primary key, // 列级约束
+            username varchar(255),
+            email varchar(255)
+        );
+        insert into t_user(id, username, email) value(1, 'zs', 'zhangsan@qq.com');
+        insert into t_user(id, username, email) value(1, 'ls', 'lisi@qq.com');
+        insert into t_user(id, username, email) value(1, 'ww', 'wangwu@qq.com');
+
+    主键的作用
+        表的设计三范式中要求，任何一张表中应存设主键
+        主键值是该行记录在该表中的唯一标识
+
+    主键的分类
+        根据字段数量划分
+            单一主键
+            复合主键（不推荐使用，违背设计三范式）
+        根据主键性质划分
+            自然主键
+            业务主键（不推荐使用，应当与业务数据剥离）
+
+    MySQL提供主键值自增，Oracle中也提供了自增机制，叫做序列（sequence）对象
+        drop table if exists t_user;
+        create table t_user(
+            id int primary key auto_increment, // id字段自动维护一个自增的数字，默认从1开始，以1自增
+            username varchar(255)
+        );
+        insert into t-user(username) value('a');
+
+5. 外键约束（foreign key）
+        drop table if exists t_student;
+        drop table if exists t_class;
+        create table t_class(
+            cno int,
+            cname varchar(255),
+            primary key(cno)
+        );
+        create table t_student(
+            sno int,
+            sname varchar(255),
+            classno int,
+            foreign key(classno) references t_class(cno)
+        );
+
+    外键值可为NULL（即不参与设置外键值，与被引用的字段是不是主键无关）
+    外键约束所引用的字段可以不是主键，但必须具有唯一性
+
+    delete表中数据，需要从子表开始，drop表结构，需要从父表开始（原因都是因为彼此的外键）

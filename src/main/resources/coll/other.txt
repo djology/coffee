@@ -1,0 +1,10 @@
+作为初级Java工程师应该掌握的技术：
+    1. Java SE
+    2. SQL
+    3. 前端
+    4. Java EE
+    5. 框架
+    6. 设计模式
+    7. 基础算法和数据结构
+    8. maven等构建工具，git等版本控制工具，Linux命令，log4j，debug，junit单元测试，日志打印，NoSQL
+    9. 激情
