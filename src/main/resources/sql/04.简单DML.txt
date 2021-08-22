@@ -55,7 +55,7 @@
         truncate table 表名; （不可回滚）
 
     增删改查，CRUD
-            Create（新增）
-            Retrieve（检索）
-            Update（修改）
-            Delete（删除）
+        Create（新增）
+        Retrieve（检索）
+        Update（修改）
+        Delete（删除）
